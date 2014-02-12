@@ -319,7 +319,7 @@ if __name__ == '__main__':
 			wordlst = Text.ParsePhrase(p.lower())
 			print "------------------------------"
 			res = BestResponse(memory, bufferlst, termlst, lastsubs, wordlst).strip()
-			#res2 = res[0].upper() + res[1:]
+			res2 = res[0].upper() + res[1:]
 			print res2
 	except (KeyboardInterrupt, SystemExit, EOFError):
 		print "Saving..."
