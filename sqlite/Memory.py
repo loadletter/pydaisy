@@ -130,7 +130,7 @@ def ReturnPattern(memorytuple, lastword):
 	return (w1, w2, w3)
 
 def Response(memorytuple, termlist):
-	#ŧake a random terminator from memory and get the next 3 words
+	#take a random terminator from memory and get the next 3 words
 	w1, w2, w3 = ReturnPattern(memorytuple, '')
 	if w2 == '':
 		w3 = w1
