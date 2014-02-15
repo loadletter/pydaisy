@@ -5,8 +5,9 @@ Port of the daisy chatbot to python
 
 IIRC it works like this:
 
-sqlite version
-Import the original daisy memory file:
+##sqlite version
+
+Import the original daisy memory file (ie: replace filename with ../MEM.DSY):
 ~~~
 python ImportText.py botname filename
 ~~~
@@ -20,4 +21,4 @@ Learning should work with the other script:
 ~~~
 python Tests.py chatbot
 ~~~
-(BOTNAME and LEARN should be changed)
+(BOTNAME and LEARN should be changed in the file)
