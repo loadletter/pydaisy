@@ -38,3 +38,4 @@ nosetests.xml
 #daisy files
 *.cache
 *.sqlite3
+*.log
