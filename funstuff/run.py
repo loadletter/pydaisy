@@ -45,8 +45,10 @@ if __name__ == '__main__':
 	elif sys.argv[1] == "pandora":
 		botname = "daisy_vs_pandora"
 		f = open(botname + ".log", "a")
-		bot1 = factory.create(ChatterBotType.PANDORABOTS, 'b0dafd24ee35a477')
+		#bot1 = factory.create(ChatterBotType.PANDORABOTS, 'b0dafd24ee35a477')
+		bot1 = factory.create(ChatterBotType.PANDORABOTS, '9fa364f2fe345a10') #mitsuku chatbot from mitsuku.com
 		bot1session = bot1.create_session()
+		bot1session.pandorabots_url = 'http://fiddle.pandorabots.com/pandora/talk-xml' #mitsuku doesn't work with the normal url
 		chatbot(botname, bot1session, f)
 	else:
 		print "Invalid argument"

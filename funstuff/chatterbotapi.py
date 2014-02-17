@@ -144,11 +144,12 @@ class _PandorabotsSession(ChatterBotSession):
         self.vars = {}
         self.vars['botid'] = bot.botid
         self.vars['custid'] = uuid.uuid1()
+        self.pandorabots_url = 'http://www.pandorabots.com/pandora/talk-xml'
 
     def think_thought(self, thought):
         self.vars['input'] = thought.text
         data = urllib.urlencode(self.vars)
-        url_response = urllib2.urlopen('http://www.pandorabots.com/pandora/talk-xml', data)
+        url_response = urllib2.urlopen(self.pandorabots_url, data)
         response = url_response.read()
         response_dom = xml.dom.minidom.parseString(response)
         response_thought = ChatterBotThought()
