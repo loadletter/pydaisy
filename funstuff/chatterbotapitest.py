@@ -23,8 +23,12 @@ factory = ChatterBotFactory()
 bot1 = factory.create(ChatterBotType.CLEVERBOT)
 bot1session = bot1.create_session()
 
-bot2 = factory.create(ChatterBotType.PANDORABOTS, 'b0dafd24ee35a477')
-bot2session = bot2.create_session()
+#bot2 = factory.create(ChatterBotType.PANDORABOTS, 'b0dafd24ee35a477')
+#bot2session = bot2.create_session()
+
+bot2 = factory.create(ChatterBotType.PANDORABOTS, '9fa364f2fe345a10') #mitsuku chatbot from mitsuku.com
+bot2session = bot1.create_session()
+bot2session.pandorabots_url = 'http://fiddle.pandorabots.com/pandora/talk-xml' #mitsuku doesn't work with the normal url
 
 s = 'Hi'
 while (1):
