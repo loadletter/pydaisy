@@ -5,7 +5,7 @@ sys.path.append('../sqlite')
 from Memory import *
 from Text import *
 
-
+RATELIMIT=True
 LEARN=True
 
 def chatbot(botname, remotebot, out=sys.stdout):
@@ -22,10 +22,20 @@ def chatbot(botname, remotebot, out=sys.stdout):
 			out.write("Local: %s\n" % msg)
 			msg = remotebot.think(msg)
 			out.write("Remote: %s\n" % msg)
+			thinkstart = time.time()
 			p = Text.AddPunct(msg)
 			wordlst = Text.ParsePhrase(p.lower())
 			msg = BestResponse(memory, bufferlst, termlst, lastsubs, wordlst).strip()
 			out.flush()
+			#maybe this could prevent bans from cleverbot
+			if RATELIMIT == True:
+				print "sleep",
+				while (thinkstart + ((len(msg) + 1) / 15)) > time.time():
+					time.sleep(1)
+					print ".",
+					sys.stdout.flush()
+				print
+			
 			if LEARN == True:
 				LearnAndUpdateTerm(memory, termlst, p)
 	except (KeyboardInterrupt, SystemExit, EOFError):
