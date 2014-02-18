@@ -1,5 +1,5 @@
 #!/usr/bin/env python2
-RATELIMIT=True
+RATELIMIT=False
 LEARN=True
 ENABLEPROXY=True
 
