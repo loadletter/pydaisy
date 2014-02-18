@@ -1,4 +1,5 @@
 from chatterbotapi import ChatterBotFactory, ChatterBotType
+import sys
 
 """
     chatterbotapi
@@ -37,5 +38,5 @@ while (1):
     
     s = bot2session.think(s);
     print 'bot2> ' + s
-    
+    sys.stdout.flush()
     s = bot1session.think(s);
