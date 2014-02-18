@@ -1,3 +1,15 @@
+#!/usr/bin/env python2
+RATELIMIT=True
+LEARN=True
+ENABLEPROXY=True
+
+
+if ENABLEPROXY == True:
+	import socks
+	import socket
+	socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "localhost", 9150)
+	socket.socket = socks.socksocket
+
 from chatterbotapi import ChatterBotFactory, ChatterBotType
 
 import sys
@@ -5,8 +17,6 @@ sys.path.append('../sqlite')
 from Memory import *
 from Text import *
 
-RATELIMIT=True
-LEARN=True
 
 def chatbot(botname, remotebot, out=sys.stdout):
 	memory = OpenMemory(botname)
