@@ -88,14 +88,17 @@ class _CleverbotSession(ChatterBotSession):
         self.vars['sub'] = 'Say'
         self.vars['islearning'] = '1'
         self.vars['cleanslate'] = 'false'
-
+        self.user_agent = "Opera/9.80 (Android 4.0.4; Linux; Opera Mobi/ADR-1205181138; U; pl) Presto/2.10.254 Version/12.00"
+        
     def think_thought(self, thought):
         self.vars['stimulus'] = thought.text
         data = urllib.urlencode(self.vars)
         data_to_digest = data[9:self.bot.endIndex]
         data_digest = md5.new(data_to_digest).hexdigest()
         data = data + '&icognocheck=' + data_digest
-        url_response = urllib2.urlopen(self.bot.url, data)
+        opener = urllib2.build_opener()
+        opener.addheaders = [('User-agent', self.user_agent)]
+        url_response = opener.open(self.bot.url, data)
         response = url_response.read()
         response_values = response.split('\r')
         #self.vars['??'] = _utils_string_at_index(response_values, 0)
